@@ -11,7 +11,8 @@ import * as api from '../services/auth';
 
 function MapTabScreen (props) { 
   const {state} = useAuth();
-  var userEmail = { email: state.user.email}
+  var userEmail = { email: state.user.email} 
+
   
 
   const [catchData, setCatchData] = useState([])
@@ -19,30 +20,32 @@ function MapTabScreen (props) {
   useEffect(() => {
     const fetchCatches = async () => {
       const res = await api.getCatches(userEmail)
-      //const {catches} = res.catches
 
       setCatchData(res.catches)
-
     }
-
     fetchCatches()
 
-  }, )
+  },)
+
     return (
       <View style={{margin: 0, flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{margin: 0, fontSize: 30}}>The Map</Text> 
-        <GoogleMap catchData={catchData}/>      
+        {/* <Text style={{margin: 0, fontSize: 30}}>The Map</Text>  */}
+        <GoogleMap catchData={catchData} userEmail={state.user.email}/>  
       </View>
     );
   }  
+
   
   
-  const GoogleMap = ({ catchData, center, zoom}) => {  
+  
+  const GoogleMap = ({ catchData, userEmail, center, zoom}) => {  
 
     
     const markers = catchData.map( ev => {
       return <LocationMarker lat={ev.location.lat} lng= {ev.location.lng}></LocationMarker>
     })
+
+    const [addMarkers, setMarkers] = React.useState([]);
     
 
     const defaultProps = {
@@ -60,6 +63,7 @@ function MapTabScreen (props) {
           bootstrapURLKeys={{ key: 'AIzaSyAMnCYtkva6cBE9YIygktjY5o09btPqB9I'}}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
+          onClick={({x, y, lat, lng, event}) => api.addCatch({email: userEmail,catch: {location:{lat:lat,lng:lng}}})}
         >
           
           {markers}
@@ -76,15 +80,15 @@ function MapTabScreen (props) {
     
 export default MapTabScreen;
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    map: {
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+});
