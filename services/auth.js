@@ -27,11 +27,19 @@ export async function login(data){
 export async function getCatches(data){
     try{
 
-        console.log(data)
         let res = await axios.post(c.CATCHES, data);
-        console.log(res.data)
         return res.data;
     }catch (e) {
+        throw handler(e);
+    }
+}
+
+export async function addCatch(data){
+    try{
+        console.log(data)
+        let res = await axios.put(c.ADDCATCH, data);
+        return res.data;
+    }catch(e){
         throw handler(e);
     }
 }
