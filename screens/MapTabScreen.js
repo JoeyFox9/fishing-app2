@@ -29,24 +29,46 @@ function MapTabScreen (props) {
 
     return (
       <View style={{margin: 0, flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        {/* <Text style={{margin: 0, fontSize: 30}}>The Map</Text>  */}
         <GoogleMap catchData={catchData} userEmail={state.user.email}/>  
       </View>
     );
   }  
 
+  const InfoWindow = (props) => {
+    const { selected } = props;
+    const infoWindowStyle = {
+      // position: 'relative',
+      // bottom: 150,
+      // left: '-45px',
+      width: 220,
+      backgroundColor: 'white',
+      boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
+      padding: 10,
+      fontSize: 14,
+      zIndex: 100,
+    };
   
+    return (
+      <div style={infoWindowStyle}>
+        <div style={{ fontSize: 16 }}>
+          <h1>HELLO</h1>
+        </div>
+       
+      </div>
+    );
+  };
   
-  
-  const GoogleMap = ({ catchData, userEmail, center, zoom}) => {  
 
+  
+  
+  
+  const GoogleMap = ({ catchData, userEmail, center, zoom}) => {    
+
+    const [selected, selectMarker] = useState([])
     
     const markers = catchData.map( ev => {
-      return <LocationMarker lat={ev.location.lat} lng= {ev.location.lng}></LocationMarker>
-    })
-
-    const [addMarkers, setMarkers] = React.useState([]);
-    
+      return <LocationMarker lat={ev.location.lat} lng= {ev.location.lng} customClickEvent={() =>{selectMarker(ev);console.log(ev)}}></LocationMarker>
+    })   
 
     const defaultProps = {
       center: {
@@ -67,11 +89,9 @@ function MapTabScreen (props) {
         >
           
           {markers}
-          {/* <AnyReactComponent
-            lat={53.4964}
-            lng={9.2764}
-            text="My Marker"
-          /> */}
+
+          {selected ? (<h1>hello</h1>):null}
+         
         </GoogleMapReact>
       </div>
     );
