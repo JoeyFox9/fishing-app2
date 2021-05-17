@@ -5,17 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 export default function HomeScreen({navigation}){
 
-    async function getMoviesFromApi() {
-      try {
-        console.log("home")
-        let response = await fetch('http://10.0.0.6:3000/user/info');
-        let responseJson = await response.json();
-        console.log(responseJson.message);
-        return responseJson.message
-      } catch (error) {
-        console.error(error);
-      }
-    }
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -31,7 +20,7 @@ export default function HomeScreen({navigation}){
 
                                 <TouchableOpacity
                                      style={styles.userBtn}
-                                     onPress={() => navigation.navigate('Gallery')}
+                                     onPress={() => navigation.navigate('Camera')}
                                 >
                                 <Text style={styles.btnTxt}>Gallery</Text>
                           </TouchableOpacity>

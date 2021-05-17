@@ -1,5 +1,5 @@
 import React, {useMemo, useReducer, useContext, Dispatch, SetStateAction} from 'react';
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 //IMPORT REDUCER, INITIAL STATE AND ACTION TYPES
@@ -98,4 +98,9 @@ function AuthProvider(props) {
 const useAuth = () => useContext(AuthContext);
 export { AuthContext, useAuth }
 export default AuthProvider;
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd
+
 

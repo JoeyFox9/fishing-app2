@@ -10,3 +10,5 @@ export default function LocationMarker(props){
     )
     
 }
+// Reference:
+//https://www.youtube.com/watch?v=ontX4zfVqK8&t=941s

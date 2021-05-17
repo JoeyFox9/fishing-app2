@@ -20,18 +20,13 @@ export default function LoginScreen (props){
     async function onSubmit(state){
   
       try {
-        console.log("here in onSubmit" + state)
-        console.log(state)
         let response = await api.login(state);
-        console.log(response)
         await handleLogin(response);
   
         let username = (response.user.username !== null);
         if (username) navigate('Home');
-        else navigation.replace('Username');
       } catch (error) {
         console.log(error)
-        //setError(error.message);
       }
     }
   
@@ -117,3 +112,7 @@ textAlign: "center"
 }
 
 });
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd

@@ -11,20 +11,17 @@ import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import BottomTabNavigator from './BottomTabNavigator';
-import LinkingConfiguration from './LinkingConfiguration';
 //import * as SecureStore from 'expo-secure-store';
 import reducer, {initialState} from '../reducer'
 import LoginScreen from '../screens/LoginScreen';
 import AuthStack from '../routes/auth';
-import HomeStack from '../routes/home';
 import AuthLoading from '../screens/AuthLoading'
 import AuthProvider from '../providers/auth';
 
 
 export default function Navigation(props) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}>
+    <NavigationContainer>
       <AuthProvider>
         <Navigator />
       </AuthProvider>      
@@ -47,11 +44,7 @@ const AppStack = createSwitchNavigator(
 
 const Navigator = createAppContainer(AppStack);
 
-// function RootNavigator() {
-//   return (
-//       <Stack.Navigator screenOptions={{ headerShown: false }}>       
-//         <Stack.Screen name="Root" component={BottomTabNavigator} />      
-//         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-//       </Stack.Navigator>
-//   );
-// }
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd
+

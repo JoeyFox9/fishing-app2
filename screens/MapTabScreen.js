@@ -37,9 +37,7 @@ function MapTabScreen (props) {
   const InfoWindow = (props) => {
     const { selected } = props;
     const infoWindowStyle = {
-      // position: 'relative',
-      // bottom: 150,
-      // left: '-45px',
+
       width: 220,
       backgroundColor: 'white',
       boxShadow: '0 2px 7px 1px rgba(0, 0, 0, 0.3)',
@@ -51,7 +49,7 @@ function MapTabScreen (props) {
     return (
       <div style={infoWindowStyle}>
         <div style={{ fontSize: 16 }}>
-          <h1>HELLO</h1>
+          
         </div>
        
       </div>
@@ -67,7 +65,7 @@ function MapTabScreen (props) {
     const [selected, selectMarker] = useState([])
     
     const markers = catchData.map( ev => {
-      return <LocationMarker lat={ev.location.lat} lng= {ev.location.lng} customClickEvent={() =>{selectMarker(ev);console.log(ev)}}></LocationMarker>
+      return <LocationMarker lat={ev.location.lat} lng= {ev.location.lng} customClickEvent={()=>{selectMarker(ev);console.log(ev)}}></LocationMarker>
     })   
 
     const defaultProps = {
@@ -90,7 +88,7 @@ function MapTabScreen (props) {
           
           {markers}
 
-          {selected ? (<h1>hello</h1>):null}
+          
          
         </GoogleMapReact>
       </div>
@@ -112,3 +110,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
 });
+
+// Reference:
+//https://www.youtube.com/watch?v=ontX4zfVqK8&t=941s

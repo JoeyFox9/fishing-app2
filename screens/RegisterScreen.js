@@ -15,8 +15,7 @@ export default function RegisterScreen(props){
         )
     }
     const fields = [
-//            {name: 'firstName', label: 'First Name', required: true},
-//            {name: 'lastName', label: 'Last Name', required: true},
+
             {name: 'email', label: 'Email Address', required: true},
             {name: 'password', label: 'Password', required: true, secure:true}
         ];
@@ -25,7 +24,7 @@ export default function RegisterScreen(props){
 
       return (
         <View style={styles.container2}>
-                  <Text> My Fishing mApp Signup</Text>
+                  <Text> mApp My Fish Signup</Text>
                   {/* <StatusBar style="auto" /> */}
 
                    <Form {...formProps}></Form>
@@ -92,3 +91,7 @@ textAlign: "center"
 }
 
 });
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd

@@ -83,3 +83,7 @@ export function handler(err) {
 
     return new Error(error.message);
 }
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd

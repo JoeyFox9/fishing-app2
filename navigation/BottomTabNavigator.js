@@ -21,7 +21,7 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="HomeTab">
-      {/* //tabBarOptions={{ activeTintColor: Colors[Blue].tint }}> */}
+      
       <BottomTab.Screen
         name="HomeTab"
         component={HomeTabNavigator}
@@ -66,8 +66,13 @@ function MapTabNavigator() {
       <MapTabStack.Screen
         name="MapTabScreen"
         component={MapTabScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        
       />
     </MapTabStack.Navigator>
   );
 }
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd
+

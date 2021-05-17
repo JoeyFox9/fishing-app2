@@ -22,7 +22,7 @@ export default function AuthLoading(props) {
                 let username = !!(user.username);
 
                 if (username) navigate('App');
-                else navigate('Auth', {}, StackActions.replace({ routeName: "Username" }))
+                
 
             } else navigate('Auth');
         } catch (e) {
@@ -37,3 +37,7 @@ export default function AuthLoading(props) {
         </View>
     );
 }
+
+//References:
+// https://reactnavigation.org/docs/auth-flow/
+// https://betterprogramming.pub/how-to-add-authentication-to-your-react-native-app-with-react-hooks-and-react-context-api-46f57aedbbd
